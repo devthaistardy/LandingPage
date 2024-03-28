@@ -1,23 +1,32 @@
-const imagensPainel = document.querySelectorAll('.imagem-painel');
-const setaAvancar = document.getElementById('btn-avancar');
-const setaVoltar = document.getElementById('btn-voltar');
-let imagemAtual = 0;
+const imagensPainel = document.querySelectorAll('.imagem-painel')
+const setaAvancar = document.getElementById('btn-avancar')
+const setaVoltar = document.getElementById('btn-voltar')
+let imagemAtual = 0
 
-setaAvancar.addEventListener('click', function() {
-
-  const totalDeImagens = imagensPainel.length -1;
-  if(imagemAtual === totalDeImagens ) {
-    return;
-  }
-
-  imagemAtual++; 
-
-
+function esconderImagem() {
   imagensPainel.forEach(imagem => {
     imagem.classList.remove('mostrar')
   })
+}
 
-  imagensPainel[imagemAtual].classList.add('mostrar');
+function mostrarImagem() {
+  imagensPainel[imagemAtual].classList.add('mostrar')
+  
+}
+
+setaAvancar.addEventListener('click', function() {
+
+  const totalDeImagens = imagensPainel.length -1
+  if(imagemAtual === totalDeImagens ) {
+    return
+  }
+
+  imagemAtual++;
+
+
+  esconderImagem()
+  mostrarImagem()
+
 })
 
 setaVoltar.addEventListener('click', function() {
@@ -29,9 +38,7 @@ setaVoltar.addEventListener('click', function() {
   imagemAtual--;
 
 
-  imagensPainel.forEach(imagem => {
-    imagem.classList.remove('mostrar')
-  })
+  esconderImagem()
+  mostrarImagem()
 
-  imagensPainel[imagemAtual].classList.add('mostrar');
 })
